@@ -9,7 +9,7 @@ all: ${OBJ} ${NAME}
 
 ${NAME} :
 			${MAKE} libft
-			cc ${CFLAGS} -I. ${FUN}  ${LIBFT}
+			cc ${CFLAGS} -I. ${FUN} ${LIBFT}
 			ar rc ${NAME}
 clean:
 	rm -f ${OBJ}
