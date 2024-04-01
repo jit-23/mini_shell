@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   main.c                                             :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: fde-jesu <fde-jesu@student.42porto.com>    +#+  +:+       +#+        */
+/*   By: fde-jesu <fde-jesu@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/12/26 17:37:27 by fde-jesu          #+#    #+#             */
-/*   Updated: 2024/01/13 06:41:09 by fde-jesu         ###   ########.fr       */
+/*   Updated: 2024/03/31 03:06:11 by fde-jesu         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -51,7 +51,7 @@ static void	command_not_found(t_pipex *pipex)
 	}
 }
 
-void	find_path(char **env, t_pipex *pipex)
+static void	find_path(char **env, t_pipex *pipex)
 {
 	char	*path;
 	int		i;

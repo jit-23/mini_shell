@@ -3,7 +3,11 @@ CFLAGS:= -Wall -Wextra -Werror
 RM:= rm -f
 
 #TAKE THIS OFF
-FUN:= $(wildcard src/*.c)
+#FUN:= $(wildcard src/*.c)
+FUN:= src/main.c \
+			src/parsing.c \
+			src/utils.c
+
 OBJ:= ${patsubst %.c, %.o, ${FUN}}
 
 MAKE:= make -C

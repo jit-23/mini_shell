@@ -6,7 +6,7 @@
 /*   By: fde-jesu <fde-jesu@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/03/23 16:46:18 by fde-jesu          #+#    #+#             */
-/*   Updated: 2024/03/23 17:55:30 by fde-jesu         ###   ########.fr       */
+/*   Updated: 2024/03/31 02:33:58 by fde-jesu         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -36,4 +36,20 @@ t_history	*ft_lstlast(t_history *lst)
 		temp = temp->next;
 	}
 	return (temp);
+}
+
+int	only_spaces(char *cmd_line)
+{
+	char *s;
+	int i;
+
+	s = cmd_line;
+	i = 0;
+	while(s[i])
+	{
+		if (s[i] != 32)
+			return (1);
+		i++;	
+	}
+	return (0);
 }

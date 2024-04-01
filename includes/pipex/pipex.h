@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   pipex.h                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: fde-jesu <fde-jesu@student.42porto.com>    +#+  +:+       +#+        */
+/*   By: fde-jesu <fde-jesu@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/12/26 21:53:56 by fde-jesu          #+#    #+#             */
-/*   Updated: 2024/01/13 06:40:32 by fde-jesu         ###   ########.fr       */
+/*   Updated: 2024/03/31 03:06:01 by fde-jesu         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -46,7 +46,7 @@ void	check_comands(t_pipex *pipex);
 void	ext(t_pipex *pp);
 void	check_files(t_pipex *pipex);
 void	init_pipe(t_pipex *pipex, char **argv);
-void	find_path(char **env, t_pipex *pipex);
+//void	find_path(char **env, t_pipex *pipex);
 char	*get_access(char *cmd_path, char **path_exec);
 void	pp(t_pipex *pipex, char **env);
 void	proccess_child2(t_pipex *pp, int *fd, char **env);

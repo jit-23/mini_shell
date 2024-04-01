@@ -1,34 +1,34 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_strchr.c                                        :+:      :+:    :+:   */
+/*   ft_find_chrs.c                                     :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: fde-jesu <fde-jesu@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2023/04/23 21:05:21 by fde-jesu          #+#    #+#             */
-/*   Updated: 2024/03/31 02:21:02 by fde-jesu         ###   ########.fr       */
+/*   Created: 2024/03/31 02:21:10 by fde-jesu          #+#    #+#             */
+/*   Updated: 2024/03/31 02:51:12 by fde-jesu         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
 
-char	*ft_strchr(const char *s, int c)
+char	*ft_find_chrs(char *main_str, char *c_to_look)
 {
 	size_t			i;
-	char			*str;
-	unsigned char	chr;
-
-	chr = (unsigned char)c;
-	str = (char *)s;
+	size_t			j;
+	
 	i = 0;
-	while (str[i] != chr)
+	j = 0;
+	while(c_to_look[i])
 	{
-		if (str[i] == '\0')
-			return (NULL);
+		j = 0;
+		while(main_str[j])
+		{
+			if (c_to_look[i] == main_str[j])
+				return (&main_str[j]);
+			j++;
+		}
 		i++;
 	}
-	return (&str[i]);
+	return (NULL);
 }
-
-
-
