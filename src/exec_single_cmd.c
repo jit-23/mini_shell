@@ -6,7 +6,7 @@
 /*   By: fde-jesu <fde-jesu@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/03/31 02:55:36 by fde-jesu          #+#    #+#             */
-/*   Updated: 2024/04/01 03:22:31 by fde-jesu         ###   ########.fr       */
+/*   Updated: 2024/04/01 20:38:58 by fde-jesu         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -65,6 +65,7 @@ void	execute_1_char_cmd(char *cmd, t_mini *bsh)
 
 void	execute_simple_cmd(char *cmd, t_mini *bsh)
 {
+	printf("aki n\n");
 	cmd = find_path(cmd, bsh->env);
 	int pid;
 	char *cmds[] = {cmd, NULL};

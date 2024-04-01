@@ -6,7 +6,7 @@
 /*   By: fde-jesu <fde-jesu@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/03/03 02:16:21 by fde-jesu          #+#    #+#             */
-/*   Updated: 2024/04/01 03:23:08 by fde-jesu         ###   ########.fr       */
+/*   Updated: 2024/04/01 18:41:37 by fde-jesu         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -58,6 +58,5 @@ void	execute_simple_cmd(char *cmd_line, t_mini *bsh);
 
 t_history	*ft_lstnew(char *content);
 t_history	*ft_lstlast(t_history *lst);
-
 
 #endif

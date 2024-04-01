@@ -6,7 +6,7 @@
 /*   By: fde-jesu <fde-jesu@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/03/23 15:46:24 by fde-jesu          #+#    #+#             */
-/*   Updated: 2024/04/01 02:51:25 by fde-jesu         ###   ########.fr       */
+/*   Updated: 2024/04/01 20:43:07 by fde-jesu         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -26,6 +26,21 @@ void get_prompt(t_mini *bsh)
 	free(directory);
 }
 
+static void	built_in(t_mini *bsh, char *cmd_line)
+{
+	
+	char *cmds[] = {cmd_line, NULL};
+	printf("aki SIM\n");
+	
+	// cmds = (char **)malloc(sizeof(char *) * 2);
+	// cmds[0] = (char*)malloc(sizeof(char) * sizeof(cmd_line) + 1);
+	// cmds[1] = NULL;
+	// cmds[0] = ft_memcpy
+	//execve(cmd_line, cmds, bsh->env);
+	printf("NOOO\n");
+}
+
+
 
 
 int main(int ac, char **av, char **env)
@@ -41,7 +56,10 @@ int main(int ac, char **av, char **env)
 		get_prompt(&bsh);
 		if (bsh.cmd_line)
 		{
-			analise_cmd(bsh.cmd_line, &bsh);
+			if(!(ft_strncmp(bsh.cmd_line, "env", sizeof("env"))))
+				built_in(&bsh, bsh.cmd_line);
+			else
+				analise_cmd(bsh.cmd_line, &bsh);
 		}
 	}
 	return 0;
