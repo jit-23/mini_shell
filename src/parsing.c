@@ -6,7 +6,7 @@
 /*   By: fde-jesu <fde-jesu@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/03/30 23:29:58 by fde-jesu          #+#    #+#             */
-/*   Updated: 2024/03/31 03:07:24 by fde-jesu         ###   ########.fr       */
+/*   Updated: 2024/04/01 03:17:49 by fde-jesu         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,15 +18,13 @@ void single_char(char *cmd_line, t_mini *bsh) // specify the errors of the exact
 	{
 		if (cmd_line[0] == ';' || cmd_line[0] == '|')
 		{
-			// sintax error msg			
+			printf("ERROR ( : | ) \n");// sintax error msg		
 		}
-		else if (cmd_line[0] == 'w' || cmd_line[0] == 'l') // only good outcome
-		{
-			execute_1_char_cmd(cmd_line, bsh->env);
-		}
+		else if (cmd_line[0] == 'w') // only good outcome
+			execute_1_char_cmd(cmd_line, bsh);
 		else
 		{
-			printf("cmd not found%s", bsh->cmd_line);
+			printf("%s: command not found\n", bsh->cmd_line);
 			//printf(command not found);
 		}
 	}
@@ -36,13 +34,12 @@ void	check_cmd_content(char *cmd_line, t_mini *bsh)
 {
 	if (ft_find_chrs(cmd_line,"\t "))
 	{
-		printf("parsing");
+		printf("parsing\n");
 		//parsing(cmd_line);	
 	}
 	else
 	{
-		printf("check_cmd_executability(cmd_line, bsh)%s", bsh->cmd_line);
-		//check_cmd_executability(cmd_line, bsh) // if it gets here it is bcs it has 2 char min. and it does not have spaces. execute if possible, else error(cmd not found)
+		execute_simple_cmd(cmd_line, bsh);
 	}
 }
 
@@ -61,6 +58,4 @@ void	analise_cmd(char *cmd_line ,t_mini *bsh)
 	{
 		check_cmd_content(cmd_line, bsh);
 	}
-
-		
 }

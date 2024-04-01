@@ -6,7 +6,7 @@
 /*   By: fde-jesu <fde-jesu@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/03/23 15:46:24 by fde-jesu          #+#    #+#             */
-/*   Updated: 2024/03/31 03:08:47 by fde-jesu         ###   ########.fr       */
+/*   Updated: 2024/04/01 02:51:25 by fde-jesu         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -32,6 +32,8 @@ int main(int ac, char **av, char **env)
 {
 	t_mini bsh;
 
+	if (ac != 1)
+		return (1);
 	ft_memset(&bsh,  0, sizeof(t_mini));
 	bsh.env = env;
 	while(1)

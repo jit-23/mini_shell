@@ -6,7 +6,7 @@
 /*   By: fde-jesu <fde-jesu@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/03/03 02:16:21 by fde-jesu          #+#    #+#             */
-/*   Updated: 2024/03/31 03:02:00 by fde-jesu         ###   ########.fr       */
+/*   Updated: 2024/04/01 03:23:08 by fde-jesu         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -41,23 +41,17 @@ typedef struct s_mini
 	
 }t_mini;
 
-//void 	init_mini(t_mini *mini);
-//void	add_to_history(t_history **history, char *cmd);
-void get_prompt(t_mini *bsh);
+void 	get_prompt(t_mini *bsh);
 void	analise_cmd(char *cmd_line ,t_mini *bsh);
-void single_char(char *cmd_line, t_mini *bsh); // specify the errors of the exact commands
+void	single_char(char *cmd_line, t_mini *bsh); // specify the errors of the exact commands
 void	check_cmd_content(char *cmd_line, t_mini *bsh);
-int	only_spaces(char *cmd_line);
+int		only_spaces(char *cmd_line);
 
-
-
-
-
-
-
-
-
-
+/* exec_single_cmd*/
+void	execute_1_char_cmd(char *cmd, t_mini *bsh);
+char 	*find_path(char* cmd,char **env);
+char	**env_array(char *path, char *cmd);
+void	execute_simple_cmd(char *cmd_line, t_mini *bsh);
 
 
 

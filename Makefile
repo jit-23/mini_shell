@@ -1,12 +1,13 @@
 NAME:= minishell
-CFLAGS:= -Wall -Wextra -Werror
+#CFLAGS:= -Wall -Wextra -Werror
 RM:= rm -f
 
 #TAKE THIS OFF
 #FUN:= $(wildcard src/*.c)
 FUN:= src/main.c \
 			src/parsing.c \
-			src/utils.c
+			src/utils.c	\
+			src/exec_single_cmd.c
 
 OBJ:= ${patsubst %.c, %.o, ${FUN}}
 
@@ -19,7 +20,8 @@ all: ${OBJ} ${NAME}
 
 ${NAME}:
 	${MAKE} ${PIPEX_DIR}
-	cc ${CFLAGS} -I. ${FUN} ${PIPEX} ${LIBFT}  -o ${NAME} -lreadline
+	cc -I. ${FUN} ${PIPEX} ${LIBFT}  -o ${NAME} -lreadline 
+# ${CFLAGS}
 
 clean:
 	${RM} ${OBJ}
