@@ -1,31 +1,23 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   utils.c                                            :+:      :+:    :+:   */
+/*   ft_strlen.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: fde-jesu <fde-jesu@student.42.fr>          +#+  +:+       +#+        */
+/*   By: eescalei <eescalei@student.42porto.com>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2024/03/23 16:46:18 by fde-jesu          #+#    #+#             */
-/*   Updated: 2024/04/03 02:34:51 by fde-jesu         ###   ########.fr       */
+/*   Created: 2023/04/18 17:37:38 by eescalei          #+#    #+#             */
+/*   Updated: 2023/04/24 16:33:45 by eescalei         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "../minishell.h"
+#include "libft.h"
 
-/*  */
-int	only_spaces(char *cmd_line)
+size_t	ft_strlen(const char *s)
 {
-	char *s;
-	int i;
+	int	x;
 
-	s = cmd_line;
-	i = 0;
-	while(s[i])
-	{
-		if (s[i] != 32)
-			return (1);
-		i++;	
-	}
-	return (0);
+	x = 0;
+	while (*(s + x) != '\0')
+		x++;
+	return (x);
 }
-

@@ -1,31 +1,27 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   utils.c                                            :+:      :+:    :+:   */
+/*   ft_strrchr.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: fde-jesu <fde-jesu@student.42.fr>          +#+  +:+       +#+        */
+/*   By: eescalei <eescalei@student.42porto.com>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2024/03/23 16:46:18 by fde-jesu          #+#    #+#             */
-/*   Updated: 2024/04/03 02:34:51 by fde-jesu         ###   ########.fr       */
+/*   Created: 2023/04/23 16:44:24 by eescalei          #+#    #+#             */
+/*   Updated: 2023/05/02 17:34:24 by eescalei         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "../minishell.h"
+#include "libft.h"
 
-/*  */
-int	only_spaces(char *cmd_line)
+char	*ft_strrchr(const char *s, int c)
 {
-	char *s;
-	int i;
+	int		i;
+	char	a;
 
-	s = cmd_line;
-	i = 0;
-	while(s[i])
-	{
-		if (s[i] != 32)
-			return (1);
-		i++;	
-	}
-	return (0);
+	a = c;
+	i = ft_strlen(s);
+	while (s[i] != a && i > 0)
+		i--;
+	if (i == 0 && s[i] != a)
+		return (0);
+	return ((char *)(s + i));
 }
-

@@ -3,49 +3,59 @@
 /*                                                        :::      ::::::::   */
 /*   pipex.c                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: fde-jesu <fde-jesu@student.42porto.com>    +#+  +:+       +#+        */
+/*   By: eescalei <eescalei@student.42porto.com>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2023/12/27 00:21:22 by fde-jesu          #+#    #+#             */
-/*   Updated: 2024/01/13 06:47:57 by fde-jesu         ###   ########.fr       */
+/*   Created: 2024/01/11 22:11:31 by eescalei          #+#    #+#             */
+/*   Updated: 2024/02/15 09:53:44 by eescalei         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "../pipex.h"
+#include "../inc/pipex.h"
 
-void	proccess_child(t_pipex *pp, int *fd, char **env)
+pid_t fork_creation(int (*fd)[2], t_pipe *pipex)
 {
-	close(fd[0]);
-	dup2(pp->fd1, STDIN_FILENO); 
-	dup2(fd[1], STDOUT_FILENO);
-	if (execve(pp->cmd1_path, pp->cmd1_args, env) == -1)
-		ext(pp);
+	pid_t pid;
+
+	pid = fork();
+	if (pid == -1)
+	{
+		free(fd);
+		print_error(pipex);
+	}
+	return (pid);
 }
 
-void	proccess_child2(t_pipex *pp, int *fd, char **env)
+void	create_descriptors(t_pipe *pipex, char **argv, char **envp, int ac)
 {
-	close(fd[1]);
-	dup2(fd[0], STDIN_FILENO);
-	dup2(pp->fd2, STDOUT_FILENO);
-	if (execve(pp->cmd2_path, pp->cmd2_args, env) == -1)
-		ext(pp);
+	pipex->cmd_count = ac -3;
+	if (envp == NULL || argv == NULL || ac < 5)
+		exit (1);
+	pipex->fdin = open(argv[1], O_RDWR);
+	if (pipex->fdin <= 0)
+		exit (2);
+	pipex->fdout = open(argv[ac - 1], O_RDWR | O_CREAT | O_TRUNC, 0644);
+	if (pipex->fdout <= 0)
+	{
+		close(pipex->fdin);
+		exit (2);
+	}
+	pipex->pid = malloc((ac - 2) * sizeof(int));
+	if (pipex->pid == NULL)
+	{
+		close(pipex->fdin);
+		close(pipex->fdout);
+		exit(3);
+	}
 }
 
-void	pp(t_pipex *pipex, char **env)
+int	main(int ac, char **argv, char **envp)
 {
-	pid_t	id1;
-	pid_t	id2;
-	int		fd[2];
+	t_pipe	pipex;
 
-	pipe(fd);
-	id1 = fork();
-	if (id1 == 0)
-		proccess_child(pipex, fd, env);
-	id2 = fork();
-	if (id2 == 0)
-		proccess_child2(pipex, fd, env);
-	close(fd[0]);
-	close(fd[1]);
-	waitpid(-1,0,0);
-	waitpid(-1,0,0);
-	return ;
+	create_descriptors(&pipex, argv, envp, ac);
+	get_path(&pipex, envp);
+	processes(&pipex, argv, envp, ac -3);
+	wait(NULL);
+	print_error(&pipex);
+	return (0);
 }

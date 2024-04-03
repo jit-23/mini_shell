@@ -5,36 +5,33 @@
 #                                                     +:+ +:+         +:+      #
 #    By: eescalei <eescalei@student.42porto.com>    +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
-#    Created: 2024/01/08 07:48:01 by eescalei          #+#    #+#              #
-#    Updated: 2024/02/11 20:20:42 by eescalei         ###   ########.fr        #
+#    Created: 2023/05/03 00:10:20 by eescalei          #+#    #+#              #
+#    Updated: 2023/12/28 18:28:17 by eescalei         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
-NAME = pipex
-CC = cc -Wall -Wextra -Werror 
-LIB_PATH = ./inc/my_library/
+NAME = libftprintf.a
 
-SRC = src/pipex.c \
-				src/processes.c \
-				src/ft_split.c \
-				src/free_errors.c \
-				src/manage_info.c
+SRCS =  ft_printf.c \
+		printstuf.c
 
-OBJ = ${SRC:.c=.o}
+FLAGS = -Wall -Wextra -Werror
 
-all:	${NAME} 
+OBJS = $(SRCS:.c=.o)
 
-${NAME}:	${OBJ}
-	make -C ./inc/my_library/
-	${CC} ${OBJ} ./inc/my_library/get_next_line/get_next_line.a ./inc/my_library/ft_printf/libftprintf.a ./inc/my_library/libft/libft.a -o ${NAME}
+$(NAME): $(OBJS)
+	ar rcs $(NAME) $(OBJS)
+#	gcc $(FLAGS) $(SRCS) -o $(NAME)
 
+all : $(NAME)
 
-clean:
-	rm -f $(OBJ)
-	make fclean -C ${LIB_PATH}
+clean :
+	rm -rf $(OBJS)
 
-fclean: clean
-	rm -f $(NAME)
+fclean : clean
+	rm -rf $(NAME)
 
-re: fclean all
-#.SILENT:
+re : fclean all
+
+.PHONY : all clean fclean re
+.SILENT:

@@ -1,31 +1,32 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   utils.c                                            :+:      :+:    :+:   */
+/*   ft_memchr.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: fde-jesu <fde-jesu@student.42.fr>          +#+  +:+       +#+        */
+/*   By: eescalei <eescalei@student.42porto.com>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2024/03/23 16:46:18 by fde-jesu          #+#    #+#             */
-/*   Updated: 2024/04/03 02:34:51 by fde-jesu         ###   ########.fr       */
+/*   Created: 2023/04/19 15:35:58 by eescalei          #+#    #+#             */
+/*   Updated: 2023/04/23 17:26:40 by eescalei         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "../minishell.h"
+#include "libft.h"
 
-/*  */
-int	only_spaces(char *cmd_line)
+void	*ft_memchr(const void *s, int c, int n)
 {
-	char *s;
-	int i;
+	int				i;
+	unsigned char	*s2;
+	unsigned char	c2;
 
-	s = cmd_line;
 	i = 0;
-	while(s[i])
+	s2 = (unsigned char *)s;
+	c2 = (unsigned char) c;
+	while (i < n)
 	{
-		if (s[i] != 32)
-			return (1);
-		i++;	
+		if (*s2 == c2)
+			return (s2);
+		s2++;
+		i++;
 	}
-	return (0);
+	return (NULL);
 }
-

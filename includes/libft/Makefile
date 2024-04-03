@@ -3,38 +3,33 @@
 #                                                         :::      ::::::::    #
 #    Makefile                                           :+:      :+:    :+:    #
 #                                                     +:+ +:+         +:+      #
-#    By: eescalei <eescalei@student.42porto.com>    +#+  +:+       +#+         #
+#    By: fde-jesu <fde-jesu@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
-#    Created: 2024/01/08 07:48:01 by eescalei          #+#    #+#              #
-#    Updated: 2024/02/11 20:20:42 by eescalei         ###   ########.fr        #
+#    Created: 2023/04/23 21:29:48 by fde-jesu          #+#    #+#              #
+#    Updated: 2024/04/03 03:39:59 by fde-jesu         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
-NAME = pipex
-CC = cc -Wall -Wextra -Werror 
-LIB_PATH = ./inc/my_library/
+NAME = libft.a
+HEADER = libft.h
+CFLAGS = -Wall -Werror -Wextra
 
-SRC = src/pipex.c \
-				src/processes.c \
-				src/ft_split.c \
-				src/free_errors.c \
-				src/manage_info.c
+FUN = $(wildcard *.c)
 
-OBJ = ${SRC:.c=.o}
+OBJ = ${FUN:.c=.o}
 
-all:	${NAME} 
+all: $(NAME)
 
-${NAME}:	${OBJ}
-	make -C ./inc/my_library/
-	${CC} ${OBJ} ./inc/my_library/get_next_line/get_next_line.a ./inc/my_library/ft_printf/libftprintf.a ./inc/my_library/libft/libft.a -o ${NAME}
-
-
+$(NAME):
+	    cc ${CFLAGS} -c ${HEADER} ${FUN}
+		ar rc ${NAME} ${OBJ}
 clean:
-	rm -f $(OBJ)
-	make fclean -C ${LIB_PATH}
+	rm -f $(OBJ) 
 
 fclean: clean
 	rm -f $(NAME)
-
+      
 re: fclean all
+
+.PHONY: all clean fclean re
 #.SILENT:

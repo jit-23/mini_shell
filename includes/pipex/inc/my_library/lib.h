@@ -1,31 +1,20 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   utils.c                                            :+:      :+:    :+:   */
+/*   lib.h                                              :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: fde-jesu <fde-jesu@student.42.fr>          +#+  +:+       +#+        */
+/*   By: eescalei <eescalei@student.42porto.com>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2024/03/23 16:46:18 by fde-jesu          #+#    #+#             */
-/*   Updated: 2024/04/03 02:34:51 by fde-jesu         ###   ########.fr       */
+/*   Created: 2023/12/19 17:26:15 by eescalei          #+#    #+#             */
+/*   Updated: 2024/01/03 22:28:16 by eescalei         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "../minishell.h"
+#ifndef LIB_H
+# define LIB_H
 
-/*  */
-int	only_spaces(char *cmd_line)
-{
-	char *s;
-	int i;
+# include "libft/libft.h"
+# include "ft_printf/ft_printf.h"
+# include "get_next_line/get_next_line_bonus.h"	
 
-	s = cmd_line;
-	i = 0;
-	while(s[i])
-	{
-		if (s[i] != 32)
-			return (1);
-		i++;	
-	}
-	return (0);
-}
-
+#endif

@@ -1,31 +1,20 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   utils.c                                            :+:      :+:    :+:   */
+/*   ft_tolower.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: fde-jesu <fde-jesu@student.42.fr>          +#+  +:+       +#+        */
+/*   By: eescalei <eescalei@student.42porto.com>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2024/03/23 16:46:18 by fde-jesu          #+#    #+#             */
-/*   Updated: 2024/04/03 02:34:51 by fde-jesu         ###   ########.fr       */
+/*   Created: 2023/04/18 17:37:51 by eescalei          #+#    #+#             */
+/*   Updated: 2023/05/01 17:03:29 by eescalei         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "../minishell.h"
-
-/*  */
-int	only_spaces(char *cmd_line)
+int	ft_tolower(unsigned int a)
 {
-	char *s;
-	int i;
-
-	s = cmd_line;
-	i = 0;
-	while(s[i])
+	if (a >= 'A' && a <= 'Z')
 	{
-		if (s[i] != 32)
-			return (1);
-		i++;	
+		a = a +32;
 	}
-	return (0);
+	return (a);
 }
-

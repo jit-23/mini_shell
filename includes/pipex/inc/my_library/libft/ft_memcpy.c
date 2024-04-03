@@ -1,31 +1,32 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   utils.c                                            :+:      :+:    :+:   */
+/*   ft_memcpy.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: fde-jesu <fde-jesu@student.42.fr>          +#+  +:+       +#+        */
+/*   By: eescalei <eescalei@student.42porto.com>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2024/03/23 16:46:18 by fde-jesu          #+#    #+#             */
-/*   Updated: 2024/04/03 02:34:51 by fde-jesu         ###   ########.fr       */
+/*   Created: 2023/04/18 17:36:37 by eescalei          #+#    #+#             */
+/*   Updated: 2023/05/01 15:55:14 by eescalei         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "../minishell.h"
+#include "libft.h"
 
-/*  */
-int	only_spaces(char *cmd_line)
+void	*ft_memcpy(void *dest, const void *src, int n)
 {
-	char *s;
-	int i;
+	int				i;
+	const char		*s1;
+	char			*s2;
 
-	s = cmd_line;
+	if (!dest && !src)
+		return (NULL);
 	i = 0;
-	while(s[i])
+	s1 = (char *)src;
+	s2 = dest;
+	while (i < n)
 	{
-		if (s[i] != 32)
-			return (1);
-		i++;	
+		s2[i] = s1[i];
+		i++;
 	}
-	return (0);
+	return (dest);
 }
-

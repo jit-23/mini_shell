@@ -1,31 +1,24 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   utils.c                                            :+:      :+:    :+:   */
+/*   ft_calloc.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: fde-jesu <fde-jesu@student.42.fr>          +#+  +:+       +#+        */
+/*   By: eescalei <eescalei@student.42porto.com>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2024/03/23 16:46:18 by fde-jesu          #+#    #+#             */
-/*   Updated: 2024/04/03 02:34:51 by fde-jesu         ###   ########.fr       */
+/*   Created: 2023/04/18 17:43:12 by eescalei          #+#    #+#             */
+/*   Updated: 2023/04/23 17:28:07 by eescalei         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "../minishell.h"
+#include "libft.h"
 
-/*  */
-int	only_spaces(char *cmd_line)
+void	*ft_calloc(size_t nmemb, size_t size)
 {
-	char *s;
-	int i;
+	void	*arry;
 
-	s = cmd_line;
-	i = 0;
-	while(s[i])
-	{
-		if (s[i] != 32)
-			return (1);
-		i++;	
-	}
-	return (0);
+	arry = malloc(nmemb * size);
+	if (arry == NULL)
+		return (0);
+	ft_bzero (arry, nmemb * size);
+	return (arry);
 }
-

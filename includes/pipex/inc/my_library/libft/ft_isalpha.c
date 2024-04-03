@@ -1,30 +1,21 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_writing.c                                       :+:      :+:    :+:   */
+/*   ft_isalpha.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: fde-jesu <fde-jesu@student.42.fr>          +#+  +:+       +#+        */
+/*   By: eescalei <eescalei@student.42porto.com>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2023/05/16 21:29:25 by fde-jesu          #+#    #+#             */
-/*   Updated: 2023/09/13 16:16:02 by fde-jesu         ###   ########.fr       */
+/*   Created: 2023/04/18 17:36:04 by eescalei          #+#    #+#             */
+/*   Updated: 2023/04/24 14:57:00 by eescalei         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
 
-void	ft_writing(char *str, unsigned int *byte_count)
+int	ft_isalpha(int a)
 {
-	int	i;
-
-	i = 0;
-	if (str == NULL)
-	{
-		*byte_count += (write(1, "(null)", 6));
-		return ;
-	}
-	while (str[i] != '\0')
-	{
-		*byte_count += write(1, &str[i], 1);
-		i++;
-	}
+	if ((a >= 'a' && a <= 'z') || (a >= 'A' && a <= 'Z'))
+		return (1);
+	else
+		return (0);
 }

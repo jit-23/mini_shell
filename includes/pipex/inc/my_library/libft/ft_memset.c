@@ -1,31 +1,26 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   utils.c                                            :+:      :+:    :+:   */
+/*   ft_memset.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: fde-jesu <fde-jesu@student.42.fr>          +#+  +:+       +#+        */
+/*   By: eescalei <eescalei@student.42porto.com>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2024/03/23 16:46:18 by fde-jesu          #+#    #+#             */
-/*   Updated: 2024/04/03 02:34:51 by fde-jesu         ###   ########.fr       */
+/*   Created: 2023/04/18 17:36:42 by eescalei          #+#    #+#             */
+/*   Updated: 2023/04/23 17:23:57 by eescalei         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "../minishell.h"
-
-/*  */
-int	only_spaces(char *cmd_line)
+void	*ft_memset(void *s, int c, int n)
 {
-	char *s;
-	int i;
+	int		i;
+	char	*str;
 
-	s = cmd_line;
 	i = 0;
-	while(s[i])
+	str = (char *)s;
+	while (i < n)
 	{
-		if (s[i] != 32)
-			return (1);
-		i++;	
+		str[i] = c;
+		i++;
 	}
-	return (0);
+	return ((void *)str);
 }
-

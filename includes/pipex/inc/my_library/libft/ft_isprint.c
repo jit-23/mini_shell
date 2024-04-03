@@ -1,31 +1,19 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   utils.c                                            :+:      :+:    :+:   */
+/*   ft_isprint.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: fde-jesu <fde-jesu@student.42.fr>          +#+  +:+       +#+        */
+/*   By: eescalei <eescalei@student.42porto.com>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2024/03/23 16:46:18 by fde-jesu          #+#    #+#             */
-/*   Updated: 2024/04/03 02:34:51 by fde-jesu         ###   ########.fr       */
+/*   Created: 2023/04/18 17:36:26 by eescalei          #+#    #+#             */
+/*   Updated: 2023/04/23 17:18:28 by eescalei         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "../minishell.h"
-
-/*  */
-int	only_spaces(char *cmd_line)
+int	ft_isprint(int a)
 {
-	char *s;
-	int i;
-
-	s = cmd_line;
-	i = 0;
-	while(s[i])
-	{
-		if (s[i] != 32)
-			return (1);
-		i++;	
-	}
-	return (0);
+	if (a <= 126 && a >= 32)
+		return (1);
+	else
+		return (0);
 }
-

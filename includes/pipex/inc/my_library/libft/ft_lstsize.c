@@ -1,31 +1,26 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   utils.c                                            :+:      :+:    :+:   */
+/*   ft_lstsize.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: fde-jesu <fde-jesu@student.42.fr>          +#+  +:+       +#+        */
+/*   By: eescalei <eescalei@student.42porto.com>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2024/03/23 16:46:18 by fde-jesu          #+#    #+#             */
-/*   Updated: 2024/04/03 02:34:51 by fde-jesu         ###   ########.fr       */
+/*   Created: 2023/04/29 13:06:42 by eescalei          #+#    #+#             */
+/*   Updated: 2024/01/03 23:07:48 by eescalei         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "../minishell.h"
+#include "libft.h"
 
-/*  */
-int	only_spaces(char *cmd_line)
+int	ft_lstsize(t_list *lst)
 {
-	char *s;
-	int i;
+	int	c;
 
-	s = cmd_line;
-	i = 0;
-	while(s[i])
+	c = 0;
+	while (lst)
 	{
-		if (s[i] != 32)
-			return (1);
-		i++;	
+		lst = lst -> next;
+		c++;
 	}
-	return (0);
+	return (c);
 }
-

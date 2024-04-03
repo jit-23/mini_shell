@@ -1,31 +1,22 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   utils.c                                            :+:      :+:    :+:   */
+/*   ft_lstadd_front.c                                  :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: fde-jesu <fde-jesu@student.42.fr>          +#+  +:+       +#+        */
+/*   By: eescalei <eescalei@student.42porto.com>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2024/03/23 16:46:18 by fde-jesu          #+#    #+#             */
-/*   Updated: 2024/04/03 02:34:51 by fde-jesu         ###   ########.fr       */
+/*   Created: 2023/04/29 12:19:36 by eescalei          #+#    #+#             */
+/*   Updated: 2023/05/01 15:31:37 by eescalei         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "../minishell.h"
+#include "libft.h"
 
-/*  */
-int	only_spaces(char *cmd_line)
+void	ft_lstadd_front(t_list **lst, t_list *new)
 {
-	char *s;
-	int i;
-
-	s = cmd_line;
-	i = 0;
-	while(s[i])
+	if (lst && new)
 	{
-		if (s[i] != 32)
-			return (1);
-		i++;	
+		new -> next = *lst;
+		*lst = new;
 	}
-	return (0);
 }
-

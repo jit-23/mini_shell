@@ -6,13 +6,13 @@
 /*   By: fde-jesu <fde-jesu@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/03/31 02:55:36 by fde-jesu          #+#    #+#             */
-/*   Updated: 2024/04/01 20:38:58 by fde-jesu         ###   ########.fr       */
+/*   Updated: 2024/04/03 04:29:08 by fde-jesu         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../minishell.h"
 
-static char	*get_the_access(char *cmd_path, char **path_exec)
+char	*get_access(char *cmd_path, char **path_exec)
 {
 	int	i;
 
@@ -48,7 +48,7 @@ char 	*find_path(char* cmd, char **env)
 	}
 	path = &path[5];
 	ev_plus_cmds = env_array(path, cmd);
-	cmd = get_the_access(cmd,ev_plus_cmds);
+	cmd = get_access(cmd,ev_plus_cmds);
 	return (cmd);
 }
 
@@ -75,27 +75,6 @@ void	execute_simple_cmd(char *cmd, t_mini *bsh)
 	waitpid(-1,0,0);
 }
 
-static void	clean_mem(char **path_array, char **buff, char *cmd)
-{
-	int	i;
-
-	i = -1;
-	if (buff)
-	{
-		while (buff[++i])
-			free(buff[i]);
-		free(buff);
-	}
-	i = -1;
-	if (path_array)
-	{
-		while (path_array[++i])
-			free(path_array[i]);
-		free(path_array);
-	}
-	if (cmd)
-		free(cmd);
-}
 
 char	**env_array(char *path, char *cmd)
 {
@@ -124,3 +103,25 @@ char	**env_array(char *path, char *cmd)
 	return (path_array);
 }
 
+
+void	clean_mem(char **path_array, char **buff, char *cmd)
+{
+	int	i;
+
+	i = -1;
+	if (buff)
+	{
+		while (buff[++i])
+			free(buff[i]);
+		free(buff);
+	}
+	i = -1;
+	if (path_array)
+	{
+		while (path_array[++i])
+			free(path_array[i]);
+		free(path_array);
+	}
+	if (cmd)
+		free(cmd);
+}

@@ -6,7 +6,7 @@
 /*   By: fde-jesu <fde-jesu@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/03/03 02:16:21 by fde-jesu          #+#    #+#             */
-/*   Updated: 2024/04/01 18:41:37 by fde-jesu         ###   ########.fr       */
+/*   Updated: 2024/04/03 04:33:57 by fde-jesu         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,8 +15,7 @@
 
 #include <readline/history.h>
 #include <readline/readline.h>
-#include "includes/pipex/pipex.h"
-#include "includes/pipex/libft/libft.h"
+#include "includes/libft/libft.h"
 #include <stdlib.h>
 #include <stdio.h>
 #include <sys/wait.h>
@@ -24,21 +23,25 @@
 #include <curses.h>
 #include <term.h>
 
-typedef struct s_history
+// typedef struct s_parse
+typedef struct s_parse
 {
-	int i;
-	char *input;
-	struct s_history *prev;
-	struct s_history *next;
-}t_history;
+	char **cmd_tokens;
+
+	int executable;
+	int file_related;
+	int built_in;
+}t_parse;
 
 typedef struct s_mini
 {
-	struct s_history *history;
+	int n_pipes;
+	int n_cmds;
+	
 	char **env;
 	char *cmd_line;
 	char *prompt;
-	
+	t_parse *full_cmd;	
 }t_mini;
 
 void 	get_prompt(t_mini *bsh);
@@ -52,11 +55,18 @@ void	execute_1_char_cmd(char *cmd, t_mini *bsh);
 char 	*find_path(char* cmd,char **env);
 char	**env_array(char *path, char *cmd);
 void	execute_simple_cmd(char *cmd_line, t_mini *bsh);
+void	clean_mem(char **path_array, char **buff, char *cmd);
+
+/* parsing */
+
+void init_parse_struct(char **cmds, t_mini *bsh);
+void	parsing(char *cmd_line, t_mini *bsh);
+char	*get_access(char *cmd_path, char **path_exec);
 
 
 
 
-t_history	*ft_lstnew(char *content);
-t_history	*ft_lstlast(t_history *lst);
+
+
 
 #endif

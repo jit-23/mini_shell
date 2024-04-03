@@ -1,31 +1,28 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   utils.c                                            :+:      :+:    :+:   */
+/*   ft_bzero.c                                         :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: fde-jesu <fde-jesu@student.42.fr>          +#+  +:+       +#+        */
+/*   By: eescalei <eescalei@student.42porto.com>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2024/03/23 16:46:18 by fde-jesu          #+#    #+#             */
-/*   Updated: 2024/04/03 02:34:51 by fde-jesu         ###   ########.fr       */
+/*   Created: 2023/04/17 17:22:52 by eescalei          #+#    #+#             */
+/*   Updated: 2023/04/23 17:27:22 by eescalei         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "../minishell.h"
+#include <stdio.h>
+#include <stdlib.h>
 
-/*  */
-int	only_spaces(char *cmd_line)
+void	ft_bzero(void *s, size_t n)
 {
-	char *s;
-	int i;
+	size_t	i;
+	char	*str;
 
-	s = cmd_line;
 	i = 0;
-	while(s[i])
+	str = s;
+	while (i < n)
 	{
-		if (s[i] != 32)
-			return (1);
-		i++;	
+		str[i] = '\0';
+		i++;
 	}
-	return (0);
 }
-

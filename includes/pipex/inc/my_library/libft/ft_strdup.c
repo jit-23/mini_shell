@@ -1,31 +1,33 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   utils.c                                            :+:      :+:    :+:   */
+/*   ft_strdup.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: fde-jesu <fde-jesu@student.42.fr>          +#+  +:+       +#+        */
+/*   By: eescalei <eescalei@student.42porto.com>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2024/03/23 16:46:18 by fde-jesu          #+#    #+#             */
-/*   Updated: 2024/04/03 02:34:51 by fde-jesu         ###   ########.fr       */
+/*   Created: 2023/04/24 15:10:07 by eescalei          #+#    #+#             */
+/*   Updated: 2023/04/24 15:23:44 by eescalei         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "../minishell.h"
+#include "libft.h"
 
-/*  */
-int	only_spaces(char *cmd_line)
+char	*ft_strdup(const char *s)
 {
-	char *s;
-	int i;
+	char	*c;
+	int		i;
+	int		len;
 
-	s = cmd_line;
+	len = ft_strlen ((char *)s);
 	i = 0;
-	while(s[i])
+	c = malloc ((len +1) * sizeof(char));
+	if (c == NULL)
+		return (NULL);
+	while (s[i] != '\0')
 	{
-		if (s[i] != 32)
-			return (1);
-		i++;	
+		c[i] = s[i];
+		i++;
 	}
-	return (0);
+	c[i] = '\0';
+	return (c);
 }
-

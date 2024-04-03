@@ -1,31 +1,27 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   utils.c                                            :+:      :+:    :+:   */
+/*   ft_striteri.c                                      :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: fde-jesu <fde-jesu@student.42.fr>          +#+  +:+       +#+        */
+/*   By: eescalei <eescalei@student.42porto.com>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2024/03/23 16:46:18 by fde-jesu          #+#    #+#             */
-/*   Updated: 2024/04/03 02:34:51 by fde-jesu         ###   ########.fr       */
+/*   Created: 2023/04/25 22:12:33 by eescalei          #+#    #+#             */
+/*   Updated: 2023/04/26 15:36:04 by eescalei         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "../minishell.h"
+#include "libft.h"
 
-/*  */
-int	only_spaces(char *cmd_line)
+void	ft_striteri(char *s, void (*f)(unsigned int, char*))
 {
-	char *s;
-	int i;
+	unsigned int	i;
 
-	s = cmd_line;
 	i = 0;
-	while(s[i])
+	if (!s || !f)
+		return ;
+	while (s[i] != '\0')
 	{
-		if (s[i] != 32)
-			return (1);
-		i++;	
+		f(i, &s[i]);
+		i++;
 	}
-	return (0);
 }
-
