@@ -11,6 +11,8 @@ FUN:= src/main.c \
 			src/exec_single_cmd.c \
 			src/exec_complex_cmd.c \
 			src/parsing.c \
+	builtins/env.c \
+	
 			
 OBJ:= ${patsubst %.c, %.o, ${FUN}}
 
