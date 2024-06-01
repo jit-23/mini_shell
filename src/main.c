@@ -5,44 +5,41 @@
 /*                                                    +:+ +:+         +:+     */
 /*   By: fde-jesu <fde-jesu@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2024/03/23 15:46:24 by fde-jesu          #+#    #+#             */
-/*   Updated: 2024/04/03 16:43:49 by fde-jesu         ###   ########.fr       */
+/*   Created: 2024/05/24 17:08:42 by fde-jesu          #+#    #+#             */
+/*   Updated: 2024/05/31 02:01:09 by fde-jesu         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "../minishell.h"
+#include "../includes/minishell.h"
+#include "../includes/env.h"
 
 
-void get_prompt(t_mini *bsh)
+static void get_prompt(t_shell *shell)
 {
-	char *directory;
+    char *dir;
 
-	directory = NULL;
-	directory = getcwd(directory, 1000);
-	bsh->prompt = ft_strjoin(directory, "$ ");
-	bsh->cmd_line = readline(bsh->prompt);
-	if (bsh->cmd_line && only_spaces(bsh->cmd_line))
-		add_history(bsh->cmd_line);
-	free(directory);
+    dir = NULL;
+    dir = getcwd(dir, 100);
+    shell->prompt= ft_strjoin(dir, "$ ");
+    shell->cmd_line = readline(shell->prompt);
+    if (shell->cmd_line)
+        add_history(shell->cmd_line);
+    free(dir);
 }
 
-
-int main(int ac, char **av, char **env)
+int main(int ac,char **av ,char **ev)
 {
-	t_mini bsh;
-
-	if (ac != 1)
-		return (1);
-	ft_memset(&bsh,  0, sizeof(t_mini));
-	bsh.env = env;
-	while(1)
-	{
-		get_prompt(&bsh);
-		if (bsh.cmd_line)
-		{
-			analise_cmd(bsh.cmd_line, &bsh);
-		}
-	}
-	return 0;
+	t_shell shell;
+    if (ac != 1)
+        return (1); // msg erro
+    shell.ev = expand_env(&shell,ev); //list of env var, separated the val and the designated name.
+    while(1)
+    {
+        get_prompt(&shell);
+        if (shell.cmd_line)
+        {
+            analise_cmd_line(&shell, shell.cmd_line);
+        }
+    }
+    return 0;
 }
-

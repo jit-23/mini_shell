@@ -1,40 +1,34 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_strncmp.c                                       :+:      :+:    :+:   */
+/*   ft_find_chrs.c                                     :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: fde-jesu <fde-jesu@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2023/04/23 21:10:54 by fde-jesu          #+#    #+#             */
-/*   Updated: 2024/05/25 19:48:04 by fde-jesu         ###   ########.fr       */
+/*   Created: 2024/03/31 02:21:10 by fde-jesu          #+#    #+#             */
+/*   Updated: 2024/03/31 02:51:12 by fde-jesu         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
 
-int	ft_strncmp(const char *s1, const char *s2, size_t n)
+char	*ft_find_chrs(char *main_str, char *c_to_look)
 {
-	unsigned char	*str1;
-	unsigned char	*str2;
 	size_t			i;
-
+	size_t			j;
+	
 	i = 0;
-	str1 = (unsigned char *)s1;
-	str2 = (unsigned char *)s2;
-	while (i < n && (str1[i] != '\0' || str2[i] != '\0'))
+	j = 0;
+	while(c_to_look[i])
 	{
-		if (str1[i] > str2[i])
-			return (1);
-		if (str1[i] < str2[i])
-			return (-1);
+		j = 0;
+		while(main_str[j])
+		{
+			if (c_to_look[i] == main_str[j])
+				return (&main_str[j]);
+			j++;
+		}
 		i++;
 	}
-	if (str1[i]  == '\0' && str2[i] != '\0')
-		return (1);
-	if (str1[i]  != '\0' && str2[i] == '\0')
-		return (1);
-	if (i != n)
-		return (1);
-	return (0);
-} 
-
+	return (NULL);
+}

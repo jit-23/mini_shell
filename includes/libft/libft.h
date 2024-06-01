@@ -6,7 +6,7 @@
 /*   By: fde-jesu <fde-jesu@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/05/01 16:09:14 by fde-jesu          #+#    #+#             */
-/*   Updated: 2024/03/31 02:27:31 by fde-jesu         ###   ########.fr       */
+/*   Updated: 2024/05/24 22:49:48 by fde-jesu         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -93,5 +93,6 @@ void	ft_writing(char *str, unsigned int *byte_count);
 char	*ft_firstword(char *command);
 int		ft_count(char const *s, char c);
 char	*ft_find_chrs(char *main_str, char *c_to_look);
+void    *s_malloc(size_t bt);
 
 #endif

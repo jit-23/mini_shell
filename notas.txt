@@ -1,2 +1,0 @@
-print_word:
-	@echo "Hello World" # '@' will make the output of the command to execute, and NOT  show the command

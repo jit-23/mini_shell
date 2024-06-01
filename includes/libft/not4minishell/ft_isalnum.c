@@ -1,40 +1,24 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_strncmp.c                                       :+:      :+:    :+:   */
+/*   ft_isalnum.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: fde-jesu <fde-jesu@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2023/04/23 21:10:54 by fde-jesu          #+#    #+#             */
-/*   Updated: 2024/05/25 19:48:04 by fde-jesu         ###   ########.fr       */
+/*   Created: 2023/04/23 22:14:44 by fde-jesu          #+#    #+#             */
+/*   Updated: 2023/11/14 19:55:09 by fde-jesu         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
 
-int	ft_strncmp(const char *s1, const char *s2, size_t n)
+int	ft_isalnum(int a)
 {
-	unsigned char	*str1;
-	unsigned char	*str2;
-	size_t			i;
-
-	i = 0;
-	str1 = (unsigned char *)s1;
-	str2 = (unsigned char *)s2;
-	while (i < n && (str1[i] != '\0' || str2[i] != '\0'))
-	{
-		if (str1[i] > str2[i])
-			return (1);
-		if (str1[i] < str2[i])
-			return (-1);
-		i++;
-	}
-	if (str1[i]  == '\0' && str2[i] != '\0')
+	if (a >= '0' && a <= '9')
 		return (1);
-	if (str1[i]  != '\0' && str2[i] == '\0')
+	else if (a >= 'A' && a <= 'Z')
 		return (1);
-	if (i != n)
+	else if (a >= 'a' && a <= 'z')
 		return (1);
 	return (0);
-} 
-
+}

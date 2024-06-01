@@ -1,40 +1,33 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_strncmp.c                                       :+:      :+:    :+:   */
+/*   ft_memchr.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: fde-jesu <fde-jesu@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2023/04/23 21:10:54 by fde-jesu          #+#    #+#             */
-/*   Updated: 2024/05/25 19:48:04 by fde-jesu         ###   ########.fr       */
+/*   Created: 2023/04/21 14:20:47 by fde-jesu          #+#    #+#             */
+/*   Updated: 2023/04/26 20:21:59 by fde-jesu         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
 
-int	ft_strncmp(const char *s1, const char *s2, size_t n)
+void	*ft_memchr(const void *s, int c, size_t n)
 {
-	unsigned char	*str1;
-	unsigned char	*str2;
 	size_t			i;
+	unsigned char	*str;
+	unsigned char	chr;
 
+	str = (unsigned char *)s;
+	chr = (unsigned char)c;
 	i = 0;
-	str1 = (unsigned char *)s1;
-	str2 = (unsigned char *)s2;
-	while (i < n && (str1[i] != '\0' || str2[i] != '\0'))
+	while (i < n)
 	{
-		if (str1[i] > str2[i])
-			return (1);
-		if (str1[i] < str2[i])
-			return (-1);
+		if (str[i] == chr)
+		{
+			return (&str[i]);
+		}
 		i++;
 	}
-	if (str1[i]  == '\0' && str2[i] != '\0')
-		return (1);
-	if (str1[i]  != '\0' && str2[i] == '\0')
-		return (1);
-	if (i != n)
-		return (1);
 	return (0);
-} 
-
+}
